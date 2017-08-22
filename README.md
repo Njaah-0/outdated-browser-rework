@@ -28,7 +28,7 @@ Custom CSS classes can be defined in options:
 		actionButtonClass: '',
 		wrapperClass: '',
 	}
-These are entirerly optional, jsut to provide more customization if needed
+These are entirely optional, jsut to provide more customization if needed
 
 ORIGINAL README IS BELOW:
 
