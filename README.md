@@ -1,5 +1,37 @@
 # Outdated Browser Rework
 
+## THIS IS FORK OF Outdated Browser Rework TO ADD SOME CUSTOM FEATURES NEEDED AT THE TIME
+
+Adds support for user provided language file and full css over-write. 
+Language file must have same structure as one it uses internally. 
+ 
+ 	{
+ 		"en": {
+        "outOfDate": "Your browser is out-of-date!",
+        "update": {
+          "web": "Update your browser to view this website correctly. ",
+          "googlePlay": "Please install Chrome from Google Play",
+          "appStore": "Please update iOS from the Settings App"
+        },
+        "url": "http://outdatedbrowser.com/",
+        "callToAction": "Update my browser now",
+        "close": "Close"
+      },
+      ....
+ 	}
+ 	
+Custom CSS classes can be defined in options:
+
+	options = {
+		titleClass: '',
+		contentClass: '',
+		actionButtonClass: '',
+		wrapperClass: '',
+	}
+These are entirerly optional, jsut to provide more customization if needed
+
+ORIGINAL README IS BELOW:
+
 Detects outdated browsers and advises users to upgrade to a new version. Handles mobile devices!
 
 This is a fork of [Burocratik](http://www.burocratik.com)'s excellent Outdated Browser, adding a number of new features.

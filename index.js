@@ -30,6 +30,9 @@ module.exports = function (options) {
     var	textColor = options.textColor || 'white';
     var	language = options.language || browserLocale.slice(0, 2); // Language code
 
+		var languages = options.languageJson || null;
+		var customCSSClasses = options.languageJson || null;
+
     var updateSource = 'web'; // Other possible values are 'googlePlay' or 'appStore'. Determines where we tell users to go for upgrades.
 
 		// Chrome mobile is still Chrome (unlike Safari which is 'Mobile Safari')
@@ -146,8 +149,11 @@ module.exports = function (options) {
       };
     };
 
-    var getmessage = function (lang) {
-      var messages = languageMessages[lang] || languageMessages.en;
+    var getmessage = function (lang, userProvidedLanguageJson, customCSSClasses) {
+      var messages = userProvidedLanguageJson || languageMessages[lang] || languageMessages.en;
+      var titleClass = customCSSClasses ? customCSSClasses.titleClass ? customCSSClasses.titleClass : '' : '';
+      var contentClass = customCSSClasses ? customCSSClasses.contentClass ? customCSSClasses.contentClass : '' : '';
+      var actionButtonClass = customCSSClasses ? customCSSClasses.actionButtonClass ? customCSSClasses.actionButtonClass : '' : '';
 
       var updateMessages = {
         'web': '<p>' + messages.update.web + '<a id="buttonUpdateBrowser" href="' + messages.url + '">' + messages.callToAction + '</a></p>',
@@ -158,8 +164,8 @@ module.exports = function (options) {
 
       var updateMessage = updateMessages[updateSource];
 
-      return '<h6>' + messages.outOfDate + '</h6>' + updateMessage +
-        '<p class="last"><a href="#" id="buttonCloseUpdateBrowser" title="' + messages.close + '">×</a></p>';
+      return '<h6 class="' + titleClass + '">' + messages.outOfDate + '</h6>' + updateMessage +
+        '<p class="last ' + contentClass + '"><a href="#" id="buttonCloseUpdateBrowser" title="' + messages.close + '" class="' + actionButtonClass + '" >×</a></p>';
     };
 
 		// Check if browser is supported
@@ -175,7 +181,11 @@ module.exports = function (options) {
       }
 
       var insertContentHere = document.getElementById('outdated');
-      insertContentHere.innerHTML = getmessage(language);
+			var wrapperClass = customCSSClasses ? customCSSClasses.wrapperClass ? customCSSClasses.wrapperClass : false : false;
+			if (wrapperClass) {
+				insertContentHere.classList.add(wrapperClass);
+			}
+      insertContentHere.innerHTML = getmessage(language, languages, customCSSClasses);
       startStylesAndEvents();
     }
   };
