@@ -27,7 +27,8 @@ Custom CSS classes can be defined in options:
 			titleClass: '',
       contentClass: '',
       actionButtonClass: '',
-      wrapperClass: '',	
+      wrapperClass: '',
+      closeButtonClass: ''
 		}
 	}
 These are entirely optional, jsut to provide more customization if needed

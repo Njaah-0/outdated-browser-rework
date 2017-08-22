@@ -154,18 +154,19 @@ module.exports = function (options) {
       var titleClass = customCSSClasses ? customCSSClasses.titleClass ? customCSSClasses.titleClass : '' : '';
       var contentClass = customCSSClasses ? customCSSClasses.contentClass ? customCSSClasses.contentClass : '' : '';
       var actionButtonClass = customCSSClasses ? customCSSClasses.actionButtonClass ? customCSSClasses.actionButtonClass : '' : '';
+      var closeButtonClass = customCSSClasses ? customCSSClasses.closeButtonClass ? customCSSClasses.closeButtonClass : '' : '';
 
       var updateMessages = {
-        'web': '<p>' + messages.update.web + '<a id="buttonUpdateBrowser" href="' + messages.url + '">' + messages.callToAction + '</a></p>',
-        'googlePlay': '<p>' + messages.update.googlePlay +
+        'web': '<p class="' + contentClass + '">' + messages.update.web + '<a id="buttonUpdateBrowser" href="' + messages.url + '">' + messages.callToAction + '</a></p>',
+        'googlePlay': '<p class="' + contentClass + '">' + messages.update.googlePlay +
         '<a id="buttonUpdateBrowser" href="https://play.google.com/store/apps/details?id=com.android.chrome">' + messages.callToAction + '</a></p>',
-        'appStore': '<p>' + messages.update[updateSource] + '</p>'
+        'appStore': '<p class="' + contentClass + '">' + messages.update[updateSource] + '</p>'
       };
 
       var updateMessage = updateMessages[updateSource];
 
       return '<h6 class="' + titleClass + '">' + messages.outOfDate + '</h6>' + updateMessage +
-        '<p class="last ' + contentClass + '"><a href="#" id="buttonCloseUpdateBrowser" title="' + messages.close + '" class="' + actionButtonClass + '" >×</a></p>';
+        '<p class="last ' + closeButtonClass + '"><a href="#" id="buttonCloseUpdateBrowser" title="' + messages.close + '" class="' + actionButtonClass + '" >×</a></p>';
     };
 
 		// Check if browser is supported
