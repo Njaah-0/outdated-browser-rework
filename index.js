@@ -31,7 +31,7 @@ module.exports = function (options) {
     var	language = options.language || browserLocale.slice(0, 2); // Language code
 
 		var languages = options.languageJson || null;
-		var customCSSClasses = options.languageJson || null;
+		var customCSSClasses = options.customCSSClasses || null;
 
     var updateSource = 'web'; // Other possible values are 'googlePlay' or 'appStore'. Determines where we tell users to go for upgrades.
 
