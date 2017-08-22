@@ -150,7 +150,7 @@ module.exports = function (options) {
     };
 
     var getmessage = function (lang, userProvidedLanguageJson, customCSSClasses) {
-      var messages = userProvidedLanguageJson || languageMessages[lang] || languageMessages.en;
+      var messages = userProvidedLanguageJson[lang] || languageMessages[lang] || languageMessages.en;
       var titleClass = customCSSClasses ? customCSSClasses.titleClass ? customCSSClasses.titleClass : '' : '';
       var contentClass = customCSSClasses ? customCSSClasses.contentClass ? customCSSClasses.contentClass : '' : '';
       var actionButtonClass = customCSSClasses ? customCSSClasses.actionButtonClass ? customCSSClasses.actionButtonClass : '' : '';
