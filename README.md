@@ -23,10 +23,12 @@ Language file must have same structure as one it uses internally.
 Custom CSS classes can be defined in options:
 
 	options = {
-		titleClass: '',
-		contentClass: '',
-		actionButtonClass: '',
-		wrapperClass: '',
+		customCSSClasses: {
+			titleClass: '',
+      contentClass: '',
+      actionButtonClass: '',
+      wrapperClass: '',	
+		}
 	}
 These are entirely optional, jsut to provide more customization if needed
 
