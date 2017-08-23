@@ -12,6 +12,15 @@ module.exports = function (options) {
     // Variable definition (before ajax)
     var outdatedUI = document.getElementById('outdated');
 
+    if (!outdatedUI) {
+    	console.warn(
+    		'DOM element with id "outdated" is missing! Such element is required for outdated-browser to work. ' +
+				'Having such element only on certain pages is a valid way to define where to display alert, so if this is' +
+				'intentional, ignore this warning'
+			);
+    	return;
+		}
+
     options = options || {};
 
     var browserLocale = window.navigator.language || window.navigator.userLanguage; // Everyone else, IE
