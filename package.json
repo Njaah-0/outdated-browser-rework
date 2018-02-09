@@ -1,16 +1,21 @@
 {
   "name": "outdated-browser-rework-2",
   "description": "Detects outdated browsers and asks users to upgrade to a new version. Handles mobile devices! Also very configurable",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "main": "index.js",
   "dependencies": {
-    "ua-parser-js": "^0.7.0"
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.9",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.1",
+    "ua-parser-js": "^0.7.0",
+    "webpack": "^3.10.0"
   },
   "author": "Ronnie Nygren <ronnie.nygren@meiko.fi>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/RedPanduzer/outdated-browser-rework"
-  },
   "keywords": [
     "outdated",
     "outdated-browser",

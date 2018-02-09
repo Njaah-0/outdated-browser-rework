@@ -31,9 +31,17 @@ Custom CSS classes can be defined in options:
       closeButtonClass: ''
 		}
 	}
-These are entirely optional, jsut to provide more customization if needed
+These are entirely optional, just to provide more customization if needed
 
-ORIGINAL README IS BELOW:
+## New in version 1.1.0
+Library can be used as static library with script tag. Build source code is in dist/library.js. This can be useful when using next.js for example. 
+
+Main function call is renamed to *outdatedBrowser(options, onload)*
+
+There is also extra parameter in outdatedBrowser-function call, *onload*. 
+When true, script is fired after window onload event is triggered. When false, script will be fired immediately.
+Is true by default. Set to false if you call *outdateBrowser* after you know window has loaded.
+#ORIGINAL README IS BELOW:
 
 Detects outdated browsers and advises users to upgrade to a new version. Handles mobile devices!
 
