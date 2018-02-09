@@ -211,11 +211,11 @@ function OutDatedBrowser(userProvidedOptions, onload = true) {
         if (oldOnload) {
           oldOnload();
         }
-        main(userProvidedOptions);
+        main(userProvidedOptions,onload);
       };
     }
   } else {
-    main(userProvidedOptions);
+    main(userProvidedOptions, onload);
   }
 
 };
