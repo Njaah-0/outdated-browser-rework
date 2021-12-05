@@ -2,6 +2,48 @@
 
 Detects outdated browsers and advises users to upgrade to a new version. Handles mobile devices!
 
+THIS IS FORK OF Outdated Browser Rework TO ADD SOME CUSTOM FEATURES NEEDED AT THE TIME
+
+Adds support for user provided language file and full css over-write. Language file must have same structure as one it uses internally.
+
+{
+	"en": {
+    "outOfDate": "Your browser is out-of-date!",
+    "update": {
+      "web": "Update your browser to view this website correctly. ",
+      "googlePlay": "Please install Chrome from Google Play",
+      "appStore": "Please update iOS from the Settings App"
+    },
+    "url": "http://outdatedbrowser.com/",
+    "callToAction": "Update my browser now",
+    "close": "Close"
+  },
+  ....
+}
+
+Custom CSS classes can be defined in options:
+
+options = {
+	customCSSClasses: {
+		titleClass: '',
+  contentClass: '',
+  actionButtonClass: '',
+  wrapperClass: '',
+  closeButtonClass: ''
+	}
+}
+
+These are entirely optional, just to provide more customization if needed
+New in version 1.1.0
+
+Library can be used as static library with script tag. Build source code is in dist/library.js. This can be useful when using next.js for example.
+
+Main function call is renamed to outdatedBrowser(options, onload)
+
+There is also extra parameter in outdatedBrowser-function call, onload. When true, script is fired after window onload event is triggered. When false, script will be fired immediately. Is true by default. Set to false if you call outdateBrowser after you know window has loaded. 
+
+## ORIGINAL README IS BELOW:
+
 This is a fork of [Burocratik](http://www.burocratik.com)'s Outdated Browser, adding a number of new features including:
 
 - Explicit browser version support
