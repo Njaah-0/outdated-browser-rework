@@ -1,26 +1,35 @@
 {
-  "name": "outdated-browser-rework-2",
-  "description": "Detects outdated browsers and asks users to upgrade to a new version. Handles mobile devices! Also very configurable",
-  "version": "1.1.0",
-  "main": "index.js",
-  "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "css-loader": "^0.28.9",
-    "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.20.1",
-    "ua-parser-js": "^0.7.0",
-    "webpack": "^3.10.0"
-  },
-  "author": "Ronnie Nygren <ronnie.nygren@meiko.fi>",
-  "keywords": [
-    "outdated",
-    "outdated-browser",
-    "upgrade",
-    "old",
-    "browser"
-  ]
+	"name": "outdated-browser-rework",
+	"description": "Detects outdated browsers and asks users to upgrade to a new version. Handles mobile devices!",
+	"version": "3.0.1",
+	"main": "index.js",
+	"dependencies": {
+		"ua-parser-js": "^0.7.22"
+	},
+	"author": "Mike MacCana <mike.maccana@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mikemaccana/outdated-browser-rework.git"
+	},
+	"keywords": [
+		"outdated",
+		"outdated-browser",
+		"upgrade",
+		"old",
+		"browser",
+		"internet-explorer"
+	],
+	"devDependencies": {
+		"browserify": "^16.2.3",
+		"jest": "^26.5.3",
+		"node-sass": "^4.14.1",
+		"nodemon": "^2.0.4",
+		"uglify-js": "^3.4.9"
+	},
+	"license": "MIT",
+	"scripts": {
+		"build": "jest && node-sass style.scss dist/style.css && browserify index.js -d -s outdatedBrowserRework -o dist/outdated-browser-rework.js && uglifyjs dist/outdated-browser-rework.js --ie8 -c -m > dist/outdated-browser-rework.min.js",
+		"watch": "nodemon --exec 'npm run build' --ignore dist",
+		"test": "jest"
+	}
 }
