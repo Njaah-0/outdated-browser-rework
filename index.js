@@ -140,7 +140,7 @@ module.exports = function(userProvidedOptions, onload = true) {
 	
 			var updateMessages = {
 				web:
-					"<p> class=\"" + contentClass + "\">" +
+					"<p class=\"" + contentClass + "\">" +
 					messages.update.web +
 					(messages.url ? (
 						'<a id="buttonUpdateBrowser" rel="nofollow" href="' +
@@ -182,8 +182,8 @@ module.exports = function(userProvidedOptions, onload = true) {
 		if (options.allowedUserAgentKeywords) {
 			for (var index = 0; index < options.allowedUserAgentKeywords.length; index++) {
 				var keyword = options.allowedUserAgentKeywords[index];
-				if (parsedUserAgent.indexOf(keyword) !== -1) {
-					allowByUserAgentKeyword = false;
+				if (parsedUserAgent.ua.indexOf(keyword) !== -1) {
+					notExplicitlyAllowByUserAgentKeyword = false;
 					break;
 				}
 			}
