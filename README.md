@@ -25,13 +25,22 @@ Custom CSS classes can be defined in options:
 	options = {
 		customCSSClasses: {
 			titleClass: '',
-      contentClass: '',
-      actionButtonClass: '',
-      wrapperClass: '',
-      closeButtonClass: ''
+      		contentClass: '',
+      		actionButtonClass: '',
+      		wrapperClass: '',
+      		closeButtonClass: ''
 		}
 	}
-These are entirely optional, just to provide more customization if needed
+
+These are entirely optional, just to provide more customization if needed.
+
+You can also explicitly allow some user agents by specifying a list of words / characters that must appear in the User Agent string for the browser to be enabled. 
+This uses simple `indexOf` comparision so be careful with what you specify. **Property must be an array.**.   
+This example would ensure that banner is never shown for LinkedIn in-app browser.
+
+	options {
+		allowedUserAgentKeywords: ['[LinkedInApp]'];
+	}
 
 ## New in version 1.1.0
 Library can be used as static library with script tag. Build source code is in dist/library.js. This can be useful when using next.js for example. 
@@ -41,7 +50,8 @@ Main function call is renamed to *outdatedBrowser(options, onload)*
 There is also extra parameter in outdatedBrowser-function call, *onload*. 
 When true, script is fired after window onload event is triggered. When false, script will be fired immediately.
 Is true by default. Set to false if you call *outdateBrowser* after you know window has loaded.
-#ORIGINAL README IS BELOW:
+
+# ORIGINAL README IS BELOW:
 
 Detects outdated browsers and advises users to upgrade to a new version. Handles mobile devices!
 

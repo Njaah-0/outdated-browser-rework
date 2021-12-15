@@ -178,7 +178,17 @@ module.exports = function(userProvidedOptions, onload = true) {
 		}
 
 		var result = evaluateBrowser(parsedUserAgent, options);
-		if (result.isAndroidButNotChrome || result.isBrowserOutOfDate || !result.isPropertySupported) {
+		var notExplicitlyAllowByUserAgentKeyword = true;
+		if (options.allowedUserAgentKeywords) {
+			for (var index = 0; index < options.allowedUserAgentKeywords.length; index++) {
+				var keyword = options.allowedUserAgentKeywords[index];
+				if (parsedUserAgent.indexOf(keyword) !== -1) {
+					allowByUserAgentKeyword = false;
+					break;
+				}
+			}
+		}
+		if (notExplicitlyAllowByUserAgentKeyword && (result.isAndroidButNotChrome || result.isBrowserOutOfDate || !result.isPropertySupported)) {
 			// This is an outdated browser and the banner needs to show
 
 			// Set this flag with the result for `getMessage`
@@ -201,19 +211,6 @@ module.exports = function(userProvidedOptions, onload = true) {
 			}
 			insertContentHere.innerHTML = getMessage(language, languages, customCSSClasses);
 			startStylesAndEvents()
-		}
-	}
-
-	// Load main when DOM ready.
-	var oldOnload = window.onload
-	if (typeof window.onload !== "function") {
-		window.onload = main
-	} else {
-		window.onload = function() {
-			if (oldOnload) {
-				oldOnload()
-			}
-			main()
 		}
 	}
 
